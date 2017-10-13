@@ -1,0 +1,62 @@
+﻿@model Embrace.Models.ContactListModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    <a asp-action="AddContact" asp-controller="Contacts">Create New</a>
+</p>
+@if(Model.Contactslist != null)
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                  UserName
+                </th>
+                <th>
+                   ContactId
+                </th>
+                <th>
+                    ContactName
+                </th>
+                <th>
+                  ContactMobile
+                </th>
+                <th>
+                   UserId
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Contactslist) {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.UserName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ContactId)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ContactName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ContactMobile)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.UserId)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                        @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                        @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                    </td>
+                </tr>
+}
+        </tbody>
+    </table>
+}
